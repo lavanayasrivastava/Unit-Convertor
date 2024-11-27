@@ -30,10 +30,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.unitconvertor.ui.theme.UnitConvertorTheme
+import androidx.compose.material3.MaterialTheme as MaterialTheme1
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,12 +69,18 @@ fun Convert(modifier: Modifier= Modifier) {
     var inputvalue by remember{ mutableStateOf("") }
     var outputvalue by remember { mutableStateOf("") }
     var inputunit by  remember { mutableStateOf("SELECT") }
-    var outputunit by remember{ mutableStateOf("SELECT") }
+    var outputunit by remember{ mutableStateOf(" SELECT ") }
     var iexpanded by remember { mutableStateOf(false)}
     var oexpanded by remember { mutableStateOf(false)}
     var iconversion by remember { mutableStateOf(1) }
     var oconversion by remember { mutableStateOf(100) }
     var submit by remember {mutableStateOf(false)}
+    var decor= TextStyle(
+        fontFamily = FontFamily.Default,
+        fontSize = 25.sp,
+        color = Color.Cyan
+
+    )
 
     fun conversionfun(){
 
@@ -84,9 +95,10 @@ fun Convert(modifier: Modifier= Modifier) {
 
     ) {
 
-        Text("unit converter",
+        Text("Unit Converter",
             modifier = Modifier.padding(16.dp),
-            /* Style= MaterialTheme.typography.headlineLarge*/)
+            style= MaterialTheme1.typography.headlineLarge,
+            color = Color.Green)
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -176,7 +188,8 @@ fun Convert(modifier: Modifier= Modifier) {
             Text(text = "CONVERT")
         }
         Spacer(modifier = Modifier.height(16.dp))
-        Text("result: ${outputvalue} $outputunit ")
+        if(submit){
+        Text("RESULT: ${outputvalue} $outputunit ", modifier = Modifier.padding(16.dp),style= decor)}
     }
 }
 
