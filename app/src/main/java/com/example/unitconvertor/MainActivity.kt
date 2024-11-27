@@ -189,7 +189,10 @@ fun Convert(modifier: Modifier= Modifier) {
         }
         Spacer(modifier = Modifier.height(16.dp))
         if(submit){
-        Text("RESULT: ${outputvalue} $outputunit ", modifier = Modifier.padding(16.dp),style= decor)}
+        Text("RESULT: ${outputvalue} $outputunit ",
+            modifier = Modifier.padding(16.dp),
+            style= decor
+        )}
     }
 }
 
